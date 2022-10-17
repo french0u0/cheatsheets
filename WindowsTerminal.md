@@ -1,6 +1,7 @@
-| Command                     | Keystrokes                    |
-| :---                        |    :----:                     |
-| Alt+Shift++                 | Horizontal split              |
-| Alt+Shift+-                 | Vertical split            |
+| Command | Keystrokes |
+| :---: | :----: |
+| Horizontal split | Alt Shift + |
+| Vertical split | Alt Shift - |
+| Close pane | Ctrl Shift w |
 
 
