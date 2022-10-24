@@ -16,13 +16,8 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
-" FZF
-set modifiable
 " TERMINAL
-"set splitright
-"set splitbelow
-
-"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 function! OpenTerminal()
   rightb term
@@ -35,7 +30,7 @@ function! OpenTerminal()
 "  if has('unix')
 "    split term://bash
 "  endif
-  resize 10
+  resize 15
 endfunction
 
 " REMAPS
@@ -50,8 +45,6 @@ nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 nnoremap <C-p> :FZF<Cr>
 " terminal
 nnoremap <c-n> :call OpenTerminal()<CR>
-" Don't change below line, see: https://vi.stackexchange.com/a/33177
-tnoremap <Esc><Esc> <C-\><C-n>ZQ
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
@@ -60,6 +53,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+" Don't change below line, see: https://vi.stackexchange.com/a/33177
+tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc><Esc> <C-\><C-n>ZQ
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
 "
