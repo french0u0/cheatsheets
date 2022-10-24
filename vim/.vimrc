@@ -1,6 +1,6 @@
 " Checkout https://pragmaticpineapple.com/improving-vim-workflow-with-fzf/ for more fzf tips, only looked at it quickly
 
-" Plugin installs
+" PLUGINS
 call plug#begin()
   Plug 'preservim/NERDTree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -8,26 +8,50 @@ call plug#begin()
   Plug 'morhetz/gruvbox'
 call plug#end()
 
-" NERDTree maps
-silent! nmap <C-b> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
+" NERDTREE
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
-" Space as leader key
+" TERMINAL
+set splitright
+set splitbelow
+
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+function! OpenTerminal()
+  split term://bash
+  resize 10
+endfunction
+
+" REMAPS
+" leader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-" Source Vim configuration file and install plugins
+" highlights (clear)
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+" vimrc and plugins
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
-
-" Ctrl p for fzf
+" fzf
 nnoremap <C-p> :GFiles<Cr>
+" terminal
+nnoremap <c-n> :call OpenTerminal()<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
-" Set colorscheme
+" GLOBAL SETTINGS
 colorscheme gruvbox
 set bg=dark
-" Global vim settings
 set number
 set ignorecase
 set smartcase
@@ -36,6 +60,3 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set tabstop=4
-
-" Set Enter to clear search highlights
-nnoremap <silent> <CR> :nohlsearch<CR><CR>
