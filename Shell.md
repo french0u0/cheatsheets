@@ -1,3 +1,3 @@
 | Command | Description |
 | :---: | :---: |
-| grep -rnw '/path/to/somewhere/' -e 'pattern' | find string in files |
+| grep -rnw . -e 'pattern' | find string in files |
