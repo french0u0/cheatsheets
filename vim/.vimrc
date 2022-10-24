@@ -41,20 +41,25 @@ let mapleader=" "
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " vimrc and plugins
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+nnoremap <silent><leader>2 :source ~/.vimrc<CR>
 " fzf
-nnoremap <C-p> :FZF<Cr>
+nnoremap <C-p> :FZF<CR>
+" Nerdtree
+silent! nmap <F2> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
 " terminal
 nnoremap <c-n> :call OpenTerminal()<CR>
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+tnoremap <leader>h <C-\><C-n><C-w>h
+tnoremap <leader>j <C-\><C-n><C-w>j
+tnoremap <leader>k <C-\><C-n><C-w>k
+tnoremap <leader>l <C-\><C-n><C-w>l
 " Don't change below line, see: https://vi.stackexchange.com/a/33177
 tnoremap <Esc> <C-\><C-n>
+nnoremap <Esc><Esc> <C-\><C-n>ZQ
 tnoremap <Esc><Esc> <C-\><C-n>ZQ
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
@@ -81,4 +86,3 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set tabstop=4
-set clipboard=unnamedplus
