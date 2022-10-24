@@ -16,14 +16,25 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
+" FZF
+set modifiable
 " TERMINAL
-set splitright
-set splitbelow
+"set splitright
+"set splitbelow
 
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 function! OpenTerminal()
-  split term://bash
+  rightb term
+"  if has('win32')
+"    echo "Someone please open the Window(s)!"
+"  endif
+"  if has('macunix')
+"    rightb term
+"  endif
+"  if has('unix')
+"    split term://bash
+"  endif
   resize 10
 endfunction
 
@@ -36,10 +47,11 @@ nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " vimrc and plugins
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 " fzf
-nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-p> :FZF<Cr>
 " terminal
 nnoremap <c-n> :call OpenTerminal()<CR>
-tnoremap <Esc> <C-\><C-n>
+" Don't change below line, see: https://vi.stackexchange.com/a/33177
+tnoremap <Esc><Esc> <C-\><C-n>ZQ
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
@@ -48,6 +60,19 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " GLOBAL SETTINGS
 colorscheme gruvbox
