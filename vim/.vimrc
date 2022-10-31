@@ -17,19 +17,19 @@ let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
 " TERMINAL
+" start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
+if has('win32')
+  set shell=\"C:/Program\ Files/WindowsApps/Microsoft.PowerShell_7.2.7.0_x64__8wekyb3d8bbwe/pwsh.exe\"
+endif
+if has('unix')
+  " Empty for now
+endif
+
 function! OpenTerminal()
-  rightb term
-"  if has('win32')
-"    echo "Someone please open the Window(s)!"
-"  endif
-"  if has('macunix')
-"    rightb term
-"  endif
-"  if has('unix')
-"    split term://bash
-"  endif
+  rightb split
+  term
   resize 15
 endfunction
 
@@ -37,6 +37,8 @@ endfunction
 " leader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+" open vimrc or init.vim, for now just open init.vim
+nnoremap <leader>q :e ~/AppData/Local/nvim/init.vim<CR>
 " highlights (clear)
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " vimrc and plugins
@@ -48,6 +50,8 @@ nnoremap <C-p> :FZF<CR>
 silent! nmap <F2> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 " terminal
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
 nnoremap <c-n> :call OpenTerminal()<CR>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
@@ -61,6 +65,9 @@ tnoremap <leader>l <C-\><C-n><C-w>l
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Esc><Esc> <C-\><C-n>ZQ
 tnoremap <Esc><Esc> <C-\><C-n>ZQ
+" Keep visual block selected after indent
+:vnoremap < <gv
+:vnoremap > >gv
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
 "
