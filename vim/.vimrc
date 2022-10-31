@@ -17,15 +17,15 @@ let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
 " TERMINAL
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
 if has('win32')
   set shell=\"C:/Program\ Files/WindowsApps/Microsoft.PowerShell_7.2.7.0_x64__8wekyb3d8bbwe/pwsh.exe\"
 endif
 if has('unix')
   " Empty for now
 endif
+
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 function! OpenTerminal()
   rightb split
@@ -39,6 +39,7 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 " open vimrc or init.vim, for now just open init.vim
 nnoremap <leader>q :e ~/AppData/Local/nvim/init.vim<CR>
+nnoremap <leader>w :source ~/AppData/Local/nvim/init.vim<CR>
 " highlights (clear)
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " vimrc and plugins
