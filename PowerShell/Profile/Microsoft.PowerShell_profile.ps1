@@ -1,4 +1,23 @@
 # Location: C:\Users\<User>\Documents\PowerShell
+
+# PowerShellGet
+# install: Install-Module -Name PowerShellGet -Force
+# Exit
+
+# PSReadLine
+#install: Install-Module PSReadLine
+
+# oh-my-posh https://ohmyposh.dev/docs/
+# install: winget install JanDeDobbeleer.OhMyPosh -s winget
+
+# terminal-icons https://github.com/devblackops/Terminal-Icons
+# install: Install-Module -Name Terminal-Icons -Repository PSGallery
+# or scoop bucket add extras and then scoop install terminal-icons
+
+# posh-git https://github.com/dahlbyk/posh-git
+# install: PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+# update: PowerShellGet\Update-Module posh-git
+
 oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH\unicorn.omp.json | Invoke-Expression
 Import-Module -Name Terminal-Icons
 Set-Alias g git
