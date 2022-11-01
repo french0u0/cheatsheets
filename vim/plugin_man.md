@@ -16,4 +16,8 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/maste
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+After this download, run:
+
+nvim +PlugInstall
+
 
