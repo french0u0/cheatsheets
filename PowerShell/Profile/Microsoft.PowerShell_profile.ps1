@@ -12,6 +12,7 @@
 
 # oh-my-posh https://ohmyposh.dev/docs/
 # install: winget install JanDeDobbeleer.OhMyPosh -s winget
+# dont forget font: oh-my-posh font install
 
 # terminal-icons https://github.com/devblackops/Terminal-Icons
 # install: Install-Module -Name Terminal-Icons -Repository PSGallery
