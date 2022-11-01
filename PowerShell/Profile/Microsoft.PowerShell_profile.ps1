@@ -1,4 +1,7 @@
-# Location: C:\Users\[User]\Documents\WindowsPowerShell\profile.ps1
+# Location of my working setup EIN-L000192: C:\Users\fjacobs\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+# Location: C:\Users\[User]\Documents\WindowsPowerShell\profile.ps1 
+# for all hosts or 
+# C:\Users\[User]\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 for powershell.exe only
 
 # PowerShellGet
 # install: Install-Module -Name PowerShellGet -Force
