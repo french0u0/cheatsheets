@@ -1,3 +1,4 @@
+# Location: C:\Users\<User>\Documents\PowerShell
 oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH\unicorn.omp.json | Invoke-Expression
 Import-Module -Name Terminal-Icons
 Set-Alias g git
