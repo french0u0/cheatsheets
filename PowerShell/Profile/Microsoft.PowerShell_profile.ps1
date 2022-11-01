@@ -1,4 +1,4 @@
-# Location: C:\Users\<User>\Documents\PowerShell
+# Location: C:\Users\[User]\Documents\WindowsPowerShell\profile.ps1
 
 # PowerShellGet
 # install: Install-Module -Name PowerShellGet -Force
