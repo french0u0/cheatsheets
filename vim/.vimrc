@@ -25,7 +25,7 @@ if has('unix')
 endif
 
 " start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+autocmd TermOpen * startinsert
 
 function! OpenTerminal()
   rightb split
@@ -37,6 +37,10 @@ endfunction
 " leader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+" show buffers
+nnoremap <leader>b :ls<CR>
+" go to buffer
+nnoremap <leader>g <C-^>
 " open vimrc or init.vim, for now just open init.vim
 nnoremap <leader>q :e ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <leader>w :source ~/AppData/Local/nvim/init.vim<CR>
@@ -86,7 +90,7 @@ let &t_EI = "\e[2 q"
 " GLOBAL SETTINGS
 colorscheme gruvbox
 set bg=dark
-set number
+set relativenumber
 set ignorecase
 set smartcase
 set hlsearch
