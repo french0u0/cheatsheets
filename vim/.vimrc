@@ -65,6 +65,8 @@ tnoremap <leader>h <C-\><C-n><C-w>h
 tnoremap <leader>j <C-\><C-n><C-w>j
 tnoremap <leader>k <C-\><C-n><C-w>k
 tnoremap <leader>l <C-\><C-n><C-w>l
+nnoremap <leader>- :resize -5 <CR>
+nnoremap <leader>= :resize +5 <CR>
 " Don't change below line, see: https://vi.stackexchange.com/a/33177
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Esc><Esc> <C-\><C-n>ZQ
@@ -106,7 +108,7 @@ let &t_SI = "\e[5 q"
 let &t_EI = "\e[4 q"
 
 " reset the cursor on start (for older versions of vim, usually not required)
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[4 q"
-augroup END
+"augroup myCmds
+"au!
+"autocmd VimEnter * silent !echo -ne "\e[4 q"
+"augroup END
