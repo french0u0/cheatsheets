@@ -19,15 +19,15 @@ let g:NERDTreeMapPreview="<F4>"
 
 " TERMINAL
 if has('win32')
+  " start terminal in insert mode
+  autocmd TermOpen * startinsert
   " set shell="C:/Program\ Files/WindowsApps/Microsoft.PowerShell_7.2.7.0_x64__8wekyb3d8bbwe/pwsh.exe\"
   set shell=pwsh.exe
 endif
 if has('unix')
-  " Empty for now
+  " start terminal in insert mode
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 endif
-
-" start terminal in insert mode
-autocmd TermOpen * startinsert
 
 function! OpenTerminal()
   rightb split
@@ -98,3 +98,15 @@ set autoindent
 set smartindent
 set tabstop=4
 set expandtab
+
+" Cursor settings
+" Insert mode
+let &t_SI = "\e[5 q"
+" Other than insert
+let &t_EI = "\e[4 q"
+
+" reset the cursor on start (for older versions of vim, usually not required)
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[4 q"
+augroup END
