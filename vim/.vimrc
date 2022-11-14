@@ -6,6 +6,7 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'morhetz/gruvbox'
+  Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 " NERDTREE
@@ -18,7 +19,8 @@ let g:NERDTreeMapPreview="<F4>"
 
 " TERMINAL
 if has('win32')
-  set shell=\"C:/Program\ Files/WindowsApps/Microsoft.PowerShell_7.2.7.0_x64__8wekyb3d8bbwe/pwsh.exe\"
+  " set shell="C:/Program\ Files/WindowsApps/Microsoft.PowerShell_7.2.7.0_x64__8wekyb3d8bbwe/pwsh.exe\"
+  set shell=pwsh.exe
 endif
 if has('unix')
   " Empty for now
@@ -34,30 +36,27 @@ function! OpenTerminal()
 endfunction
 
 " REMAPS
-" leader
+" leader, first make sure space is de-mapped
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 " show buffers
 nnoremap <leader>b :ls<CR>
-" go to buffer
-nnoremap <leader>g <C-^>
-" open vimrc or init.vim, for now just open init.vim
-nnoremap <leader>q :e ~/AppData/Local/nvim/init.vim<CR>
-nnoremap <leader>w :source ~/AppData/Local/nvim/init.vim<CR>
+" open init vim, source and plugin install
+nnoremap <leader>1 :e ~/AppData/Local/nvim/init.vim<CR>
+nnoremap <leader>2 :source ~/AppData/Local/nvim/init.vim<CR>
+nnoremap <leader>3 :PlugInstall<CR>
+nnoremap <leader>0 :VimBeGood<CR>
 " highlights (clear)
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
-" vimrc and plugins
-nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
-nnoremap <silent><leader>2 :source ~/.vimrc<CR>
 " fzf
-nnoremap <C-p> :FZF<CR>
+nnoremap <leader>p :FZF<CR>
 " Nerdtree
 silent! nmap <F2> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 " terminal
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
-nnoremap <c-n> :call OpenTerminal()<CR>
+nnoremap <leader>n :call OpenTerminal()<CR>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
