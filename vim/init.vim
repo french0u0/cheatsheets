@@ -1,3 +1,4 @@
+" Checkout https://www.jakewiesler.com/blog/getting-started-with-vim
 " Checkout https://pragmaticpineapple.com/improving-vim-workflow-with-fzf/ for more fzf tips, only looked at it quickly
 
 " PLUGINS
@@ -18,7 +19,27 @@ let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
 " AUTOCMD
-autocmd FileType groovy setlocal makeprg=npm-groovy-lint\ --noserver
+augroup LintingGroovy
+   autocmd!
+   autocmd FileType groovy setlocal makeprg=npm-groovy-lint
+   "autocmd BufWritePost *.groovy silent make! <afile> | silent redraw!
+"   autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
+
+augroup LintingPython
+   autocmd!
+   autocmd FileType python setlocal makeprg=pylint
+   autocmd BufWritePost *.py silent make! <afile> | silent redraw!
+   autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
+
+
+"" set make to execute npm-groovy-lint for groovy
+"autocmd FileType groovy setlocal makeprg=npm-groovy-lint
+"" on write, execute linting tool
+"autocmd BufWritePost *.groovy make! <afile> | redraw!
+"" open quickfixwindows when there are errors to display
+"autocmd QuickFixCmdPost [^l]* cwindow
 " TERMINAL
 if has('win32')
   " start terminal in insert mode
@@ -46,14 +67,19 @@ nnoremap <leader>b :buffers<CR>:b
 nnoremap <silent> <leader>i :bn<CR>
 nnoremap <silent> <leader>o :bp<CR>
 " open init vim, source and plugin install
-nnoremap <silent> <leader>1 :e C:\Users\fjacobs\AppData\Local\nvim\init.vim<CR>
-nnoremap <silent> <leader>2 :source C:\Users\fjacobs\AppData\Local\nvim\init.vim<CR>
+if has('win32')
+   nnoremap <silent> <leader>1 :e C:\Users\fjacobs\AppData\Local\nvim\init.vim<CR>
+   nnoremap <silent> <leader>2 :source C:\Users\fjacobs\AppData\Local\nvim\init.vim<CR>
+endif
+if has('unix')
+   nnoremap <silent> <leader>1 :e ~/.config/nvim/init.vim<CR>
+   nnoremap <silent> <leader>2 :source ~/.config/nvim/init.vim<CR>
+endif
 nnoremap <silent> <leader>3 :PlugInstall<CR>
-nnoremap <silent> <leader>4 :!npm-groovy-lint %<CR>
-nnoremap <silent> <leader>5 :!echo hello<CR>
+nnoremap <silent> <leader>4 :make % <CR> \| :copen<CR>
 nnoremap <silent> <leader>0 :VimBeGood<CR>
 " highlights (clear)
-nnoremap <silent> <CR> :nohlsearch<CR><CR>
+"nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " fzf
 nnoremap <leader>p :FZF<CR>
 " Nerdtree
