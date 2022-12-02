@@ -17,12 +17,14 @@ let g:NERDTreeStatusline = ''
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F4>"
 
+" AUTOCMD
+autocmd FileType groovy setlocal makeprg=npm-groovy-lint\ --noserver
 " TERMINAL
 if has('win32')
   " start terminal in insert mode
   autocmd TermOpen * startinsert
-  set shellcmdflag=-NoProfile\ -Command
-  set shell=pwsh.exe
+"  set shellcmdflag=-c
+"  set shell=pwsh.exe
 endif
 if has('unix')
   " start terminal in insert mode
