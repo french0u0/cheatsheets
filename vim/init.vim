@@ -33,7 +33,6 @@ augroup LintingPython
    autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
-
 "" set make to execute npm-groovy-lint for groovy
 "autocmd FileType groovy setlocal makeprg=npm-groovy-lint
 "" on write, execute linting tool
@@ -132,6 +131,7 @@ set autoindent
 set smartindent
 set tabstop=3 " Width of hard tabstop measured in spaces
 set expandtab
+set laststatus=2
 
 " Cursor settings
 " Insert mode
