@@ -2,20 +2,20 @@
 " Checkout https://pragmaticpineapple.com/improving-vim-workflow-with-fzf/ for more fzf tips, only looked at it quickly
 " PLUGINS
 call plug#begin()
-  Plug 'preservim/NERDTree'
+  "Plug 'preservim/NERDTree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'morhetz/gruvbox'
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'nvim-tree/nvim-web-devicons'
-  "Plug 'romgrk/barbar.nvim'
+  Plug 'romgrk/barbar.nvim'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'wokalski/autocomplete-flow'
 call plug#end()
 
-autocmd VimEnter * NERDTreeToggle | wincmd w
-"autocmd VimEnter wincmd w
+"autocmd VimEnter * NERDTreeToggle | wincmd w
 
 " AIRLINE
 let g:airline#extensions#tabline#enabled = 1
@@ -25,30 +25,30 @@ let g:airline#extensions#tabline#ignore_bufadd_pat =
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" NERDTREE
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
+"" NERDTREE
+"let g:NERDTreeShowHidden = 1
+"let g:NERDTreeMinimalUI = 1
+"let g:NERDTreeIgnore = []
+"let g:NERDTreeStatusline = ''
+"let g:NERDTreeMapActivateNode="<F3>"
+"let g:NERDTreeMapPreview="<F4>"
 
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind if NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufRead * call SyncTree()
+"" Check if NERDTree is open or active
+"function! IsNERDTreeOpen()
+"  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"endfunction
+"
+"" Call NERDTreeFind if NERDTree is active, current window contains a modifiable
+"" file, and we're not in vimdiff
+"function! SyncTree()
+"  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+"    NERDTreeFind
+"    wincmd p
+"  endif
+"endfunction
+"
+"" Highlight currently open buffer in NERDTree
+"autocmd BufRead * call SyncTree()
 
 
 "" Move to previous/next
@@ -73,7 +73,7 @@ autocmd BufRead * call SyncTree()
 "" Pin/unpin buffer
 "nnoremap <silent>    <A-p> <Cmd>BufferPin<CR>
 "" Close buffer
-"nnoremap <silent>    <leader>w <Cmd>BufferClose<CR>
+nnoremap <silent>    <leader>w <Cmd>BufferClose<CR>
 "nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 "" Wipeout buffer
 ""                          :BufferWipeout
@@ -158,17 +158,26 @@ nnoremap <silent> <leader>T :VimBeGood<CR>
 " highlights (clear)
 "nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " fzf
-nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>p :Files<CR>
 nnoremap <leader>; :Lines<CR>
 " nerdtree
-silent! nmap <F2> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
+" silent! nmap <F2> :NERDTreeToggle<CR>
+" silent! map <F3> :NERDTreeFind<CR>
 " terminal
 nnoremap <leader>n :term<CR>
 tnoremap <esc><esc> <C-\><C-n>
 " Keep visual block selected after indent
 :vnoremap < <gv
 :vnoremap > >gv
+" Git
+nnoremap <leader>gs :G status<CR>
+nnoremap <leader>ga :G add -vu<CR>
+nnoremap <leader>gc :G commit -m "---" \| G push<CR>
+" Focus cursor mid screen while up or down
+nnoremap <C-d> <C-d>zz
+nnoremap <C-y> <C-y>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
 "
@@ -186,6 +195,7 @@ tnoremap <esc><esc> <C-\><C-n>
 " GLOBAL SETTINGS
 colorscheme gruvbox
 set bg=dark
+set number
 set relativenumber
 set ignorecase
 set smartcase
