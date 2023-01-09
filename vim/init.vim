@@ -12,7 +12,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'wokalski/autocomplete-flow'
+"  Plug 'wokalski/autocomplete-flow'
 call plug#end()
 
 "autocmd VimEnter * NERDTreeToggle | wincmd w
